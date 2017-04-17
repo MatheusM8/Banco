@@ -57,9 +57,14 @@
             this.btnExecutarTrasf = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtValorDeposito = new System.Windows.Forms.TextBox();
+            this.btnDepositar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -171,6 +176,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(21, 186);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -344,6 +350,47 @@
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Controls.Add(this.txtValorDeposito);
+            this.tabPage1.Controls.Add(this.btnDepositar);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(257, 99);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Depósito";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(19, 28);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Valor Deposito";
+            // 
+            // txtValorDeposito
+            // 
+            this.txtValorDeposito.Location = new System.Drawing.Point(22, 44);
+            this.txtValorDeposito.Name = "txtValorDeposito";
+            this.txtValorDeposito.Size = new System.Drawing.Size(100, 20);
+            this.txtValorDeposito.TabIndex = 14;
+            this.txtValorDeposito.TextChanged += new System.EventHandler(this.txtValorDeposito_TextChanged);
+            // 
+            // btnDepositar
+            // 
+            this.btnDepositar.Enabled = false;
+            this.btnDepositar.Location = new System.Drawing.Point(154, 42);
+            this.btnDepositar.Name = "btnDepositar";
+            this.btnDepositar.Size = new System.Drawing.Size(75, 23);
+            this.btnDepositar.TabIndex = 13;
+            this.btnDepositar.Text = "Depositar";
+            this.btnDepositar.UseVisualStyleBackColor = true;
+            this.btnDepositar.Click += new System.EventHandler(this.btnDepositar_Click);
+            // 
             // FrmEditConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,6 +417,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,5 +454,9 @@
         private System.Windows.Forms.Button btnExecutarTrasf;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtValorDeposito;
+        private System.Windows.Forms.Button btnDepositar;
     }
 }

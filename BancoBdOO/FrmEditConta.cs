@@ -13,6 +13,7 @@ namespace BancoBdOO
 {
     public partial class FrmEditConta : Form
     {
+        decimal saldoAnterior;
         DBConnection conexao;
         string cmd = "";
         public Conta conta;
@@ -63,6 +64,7 @@ namespace BancoBdOO
                 {
                     rBtnPoupanca.Checked = true;
                     conta = conta as ContaPoupanca;
+                    txtLimite.Text = "1000,00";
                 }
             }
             conexao = new DBConnection();
@@ -122,7 +124,7 @@ namespace BancoBdOO
                 if (conta.Tipo.Equals("C"))
                 {
                     ((conta) as ContaCorrente).Sacar(Convert.ToDecimal(txtValorSaque.Text));
-                    MessageBox.Show("Saque Realizado com Sucesso");
+                    MessageBox.Show("Para confirmar o Saque, Clique em Salvar");
                 }
                 else
                 {
@@ -132,7 +134,7 @@ namespace BancoBdOO
                     }
                     else
                     {
-                        MessageBox.Show("Saque Realizado com Sucesso");
+                        MessageBox.Show("Para confirmar o Saque, Clique em Salvar");
                     }
                 }
             }
@@ -171,6 +173,28 @@ namespace BancoBdOO
             {
                 txtSaldoAposSaque.Text = "";
                 btnSacar.Enabled = false;
+            }
+        }
+
+        private void btnDepositar_Click(object sender, EventArgs e)
+        {
+            if (conta.Depositar(Convert.ToDecimal(txtValorDeposito.Text)))
+            {
+                MessageBox.Show("Para confirmar o Depósito, Clique em Salvar");
+                txtSaldo.Text = conta.Saldo.ToString();
+                cmd = "Update";
+            }
+            else
+            {
+                MessageBox.Show("Valor Inválido");
+            } 
+        }
+
+        private void txtValorDeposito_TextChanged(object sender, EventArgs e)
+        {
+            if (txtValorDeposito.Text != "")
+            {
+                btnDepositar.Enabled = true;
             }
         }
     }

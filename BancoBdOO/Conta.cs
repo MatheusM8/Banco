@@ -24,5 +24,15 @@
                 return false;
             }
         }
+
+        public virtual bool Depositar(decimal d)
+        {
+            if(d > 0)
+            {
+                Saldo = Saldo + d;
+                return true;
+            }
+            return false;
+        }
     }
 }

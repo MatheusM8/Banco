@@ -18,5 +18,9 @@ namespace BancoBdOO
             Desconta();
             return true;
         }
+        public override bool Depositar(decimal d)
+        {
+            return base.Depositar(d);
+        }
     }
 }
