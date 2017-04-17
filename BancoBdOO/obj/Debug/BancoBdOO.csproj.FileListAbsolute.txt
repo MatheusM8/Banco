@@ -41,3 +41,13 @@ C:\Users\Matheus\Documents\Univem\3° Ano\c#\CRUD_BANCO_Implementacao2017-master
 C:\Users\Matheus\Documents\Univem\3° Ano\c#\CRUD_BANCO_Implementacao2017-masterV2\BancoBdOO\obj\Debug\BancoBdOO.Properties.Resources.resources
 C:\Users\Matheus\Documents\Univem\3° Ano\c#\CRUD_BANCO_Implementacao2017-masterV2\BancoBdOO\obj\Debug\BancoBdOO.csproj.GenerateResource.Cache
 C:\Users\Matheus\Documents\Univem\3° Ano\c#\CRUD_BANCO_Implementacao2017-masterV2\BancoBdOO\obj\Debug\BancoBdOO.Menu.resources
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\bin\Debug\BancoBdOO.exe.config
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\bin\Debug\BancoBdOO.exe
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\bin\Debug\BancoBdOO.pdb
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\obj\Debug\BancoBdOO.csprojResolveAssemblyReference.cache
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\obj\Debug\BancoBdOO.Menu.resources
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\obj\Debug\BancoBdOO.FrmEditConta.resources
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\obj\Debug\BancoBdOO.Properties.Resources.resources
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\obj\Debug\BancoBdOO.csproj.GenerateResource.Cache
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\obj\Debug\BancoBdOO.exe
+C:\Users\Matheus\Documents\GitHub\Banco\BancoV3\BancoBdOO\obj\Debug\BancoBdOO.pdb

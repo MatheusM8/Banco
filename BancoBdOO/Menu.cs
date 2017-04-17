@@ -71,7 +71,8 @@ namespace BancoBdOO
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            AcessarConta();
+            FrmEditConta frmEdit = new FrmEditConta(AcessarConta(), this);
+            frmEdit.Show();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -81,7 +82,8 @@ namespace BancoBdOO
 
         private void btnAcessar_Click(object sender, EventArgs e)
         {
-            AcessarConta();
+            FrmEditConta frmEdit = new FrmEditConta(AcessarConta(), this);
+            frmEdit.Show();
         }
     }
 }
