@@ -11,7 +11,7 @@ namespace BancoBdOO
 {
     public class DBConnection
     {
-        string str = @"Data Source=DESKTOP-M163R49;Initial Catalog=DBBanco;Integrated Security=True;Pooling=False";
+        string str = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public SqlConnection connection { get; set; }
         SqlTransaction sqlTran;
 
@@ -21,12 +21,57 @@ namespace BancoBdOO
             connection.Open();
         }
 
+        public Conta Buscar(string Num)
+        {
+            var sql = "select * from Conta where Numero=@Numero;";
+
+            connection.Close();
+
+            connection.Open();
+
+            var comando = new SqlCommand(sql, connection);
+            comando.Parameters.AddWithValue("@Numero", Num);
+
+            SqlDataReader rdr = comando.ExecuteReader();
+            Conta c = null;
+            while (rdr.Read())
+            {
+                String Tipo = rdr["Tipo"].ToString();
+                if (Tipo == "P")
+                {
+                    c = new ContaPoupanca();
+                }
+                else
+                {
+                    c = new ContaCorrente();
+                }
+
+                c.Id = Convert.ToInt32(rdr["Id"]);
+                c.Numero = rdr["Numero"].ToString();
+                if (c.Numero.Equals(Num))
+                {
+                    c.Id = Convert.ToInt32(rdr["Id"]);
+                    c.Numero = rdr["Numero"].ToString();
+                    c.Agencia = rdr["Agencia"].ToString();
+                    c.Saldo = Convert.ToDecimal(rdr["Saldo"]);
+                    c.Tipo = Tipo;
+                }
+                
+            }
+            return c;
+        }
+
         public List<Conta> GetAll()
         {
             //using (connection)
             //{
                 var sql = "select * from Conta";
-                var comando = new SqlCommand(sql, connection);
+
+                connection.Close();
+
+                connection.Open();
+
+            var comando = new SqlCommand(sql, connection);
 
                 SqlDataReader reader = comando.ExecuteReader();
                 Conta conta = null;
@@ -62,7 +107,12 @@ namespace BancoBdOO
             //using (connection)
             //{
                 var sql = "INSERT into Conta Values (@Numero, @Agencia, @Saldo, @Tipo)";
-                sqlTran = connection.BeginTransaction();
+
+                connection.Close();
+
+                connection.Open();
+
+            sqlTran = connection.BeginTransaction();
                 SqlCommand comando = connection.CreateCommand();
                 comando.Transaction = sqlTran;
 
@@ -74,7 +124,14 @@ namespace BancoBdOO
                     comando.Parameters.Add("@Saldo", SqlDbType.Decimal).Value = Convert.ToDecimal(c.Saldo);
                     comando.Parameters.Add("@Tipo", SqlDbType.VarChar, 50).Value = c.Tipo;
 
-                    var retorno = comando.ExecuteNonQuery();
+                    Conta c1 = new Conta();
+                    c1 = Buscar(c.Numero);
+                    if(c1.Numero == c.Numero)
+                    {
+                        return false;
+                    }
+                    
+                var retorno = comando.ExecuteNonQuery();
                     sqlTran.Commit();
 
                     if (retorno > 0)
@@ -97,11 +154,10 @@ namespace BancoBdOO
             //{
                 var sql = "Update Conta set Agencia = @Agencia, " +
                             "Tipo = @Tipo, Saldo = @Saldo WHERE ID = @ID";
+                connection.Close();
 
-                if(connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+                connection.Open();
+
                 sqlTran = connection.BeginTransaction();
                 SqlCommand comando = connection.CreateCommand();
                 comando.Transaction = sqlTran;
@@ -135,14 +191,14 @@ namespace BancoBdOO
         {
             //using (connection)
             //{
-                if (connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
 
                 var sql = "Delete from Conta where Id = @id";
 
-                sqlTran = connection.BeginTransaction();
+                connection.Close();
+
+                connection.Open();
+
+            sqlTran = connection.BeginTransaction();
                 SqlCommand comando = connection.CreateCommand();
                 comando.Transaction = sqlTran;
 

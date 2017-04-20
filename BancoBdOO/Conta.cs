@@ -34,5 +34,18 @@
             }
             return false;
         }
+        public virtual bool Debita(decimal d)
+        {
+            if(d > 0 && Saldo >= d)
+            {
+                Saldo = Saldo - d;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+                
+        }
     }
 }

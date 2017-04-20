@@ -97,7 +97,11 @@ namespace BancoBdOO
 
             if(cmd == "Insert")
             {
-                conexao.Inserir(conta);
+
+                if (!conexao.Inserir(conta))
+                {
+                    MessageBox.Show("Conta ja existente");
+                }
             }
             else if(cmd == "Update")
             {
@@ -196,6 +200,42 @@ namespace BancoBdOO
             {
                 btnDepositar.Enabled = true;
             }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSaldo.Text != "" && txtTransferencia.Text != "")
+            {
+                txtSaldoAposTransf.Text = (Convert.ToDecimal(txtSaldo.Text) - Convert.ToDecimal(txtTransferencia.Text)).ToString();
+                btnExecutarTrasf.Enabled = true;
+            }
+            else
+            {
+                txtSaldoAposTransf.Text = "";
+                btnExecutarTrasf.Enabled = false;
+            }
+        }
+
+        private void btnExecutarTrasf_Click(object sender, EventArgs e)
+        {
+            if (conta.Saldo >= Convert.ToDecimal(txtTransferencia.Text))
+            {
+                conta.Debita(Convert.ToDecimal(txtTransferencia.Text));
+                Conta contaTransf = new Conta();
+                contaTransf = conexao.Buscar(txtNumContaTransf.Text);
+                contaTransf.Depositar(Convert.ToDecimal(txtTransferencia.Text));
+
+                conexao.Alterar(contaTransf);
+                conexao.Alterar(conta);
+
+                MessageBox.Show("Transferencia Realizada Com Sucesso");
+                instanciaPai.UpdateGrid();
+            }
+            else
+            {
+                MessageBox.Show("Saldo Insuficiente");
+            }
+            txtSaldo.Text = conta.Saldo.ToString();
         }
     }
 }

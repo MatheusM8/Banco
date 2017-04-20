@@ -51,16 +51,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtNumContaTransf = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSaldoAposTransf = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTransferencia = new System.Windows.Forms.TextBox();
             this.btnExecutarTrasf = new System.Windows.Forms.Button();
-            this.btnFechar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
             this.txtValorDeposito = new System.Windows.Forms.TextBox();
             this.btnDepositar = new System.Windows.Forms.Button();
+            this.btnFechar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -258,9 +258,9 @@
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.txtNumContaTransf);
             this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.txtSaldoAposTransf);
             this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.textBox3);
+            this.tabPage3.Controls.Add(this.txtTransferencia);
             this.tabPage3.Controls.Add(this.btnExecutarTrasf);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -283,7 +283,6 @@
             // 
             this.txtNumContaTransf.Location = new System.Drawing.Point(143, 26);
             this.txtNumContaTransf.Name = "txtNumContaTransf";
-            this.txtNumContaTransf.ReadOnly = true;
             this.txtNumContaTransf.Size = new System.Drawing.Size(100, 20);
             this.txtNumContaTransf.TabIndex = 25;
             // 
@@ -296,13 +295,13 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Saldo Após Trasf.";
             // 
-            // textBox2
+            // txtSaldoAposTransf
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 23;
+            this.txtSaldoAposTransf.Location = new System.Drawing.Point(16, 68);
+            this.txtSaldoAposTransf.Name = "txtSaldoAposTransf";
+            this.txtSaldoAposTransf.ReadOnly = true;
+            this.txtSaldoAposTransf.Size = new System.Drawing.Size(100, 20);
+            this.txtSaldoAposTransf.TabIndex = 23;
             // 
             // label10
             // 
@@ -313,13 +312,13 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Valor Transf.";
             // 
-            // textBox3
+            // txtTransferencia
             // 
-            this.textBox3.Location = new System.Drawing.Point(16, 26);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 21;
+            this.txtTransferencia.Location = new System.Drawing.Point(16, 26);
+            this.txtTransferencia.Name = "txtTransferencia";
+            this.txtTransferencia.Size = new System.Drawing.Size(100, 20);
+            this.txtTransferencia.TabIndex = 21;
+            this.txtTransferencia.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // btnExecutarTrasf
             // 
@@ -329,26 +328,7 @@
             this.btnExecutarTrasf.TabIndex = 20;
             this.btnExecutarTrasf.Text = "Transferir";
             this.btnExecutarTrasf.UseVisualStyleBackColor = true;
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Location = new System.Drawing.Point(207, 317);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(75, 23);
-            this.btnFechar.TabIndex = 15;
-            this.btnFechar.Text = "Fechar";
-            this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(114, 317);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 16;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
+            this.btnExecutarTrasf.Click += new System.EventHandler(this.btnExecutarTrasf_Click);
             // 
             // tabPage1
             // 
@@ -390,6 +370,26 @@
             this.btnDepositar.Text = "Depositar";
             this.btnDepositar.UseVisualStyleBackColor = true;
             this.btnDepositar.Click += new System.EventHandler(this.btnDepositar_Click);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Location = new System.Drawing.Point(207, 317);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(75, 23);
+            this.btnFechar.TabIndex = 15;
+            this.btnFechar.Text = "Fechar";
+            this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(114, 317);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 16;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
             // 
             // FrmEditConta
             // 
@@ -448,9 +448,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNumContaTransf;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtSaldoAposTransf;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTransferencia;
         private System.Windows.Forms.Button btnExecutarTrasf;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnEditar;
